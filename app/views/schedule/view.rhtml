@@ -1,0 +1,42 @@
+<% title('Schedule for ' + @schedule.date_str) %>
+
+<h3>Schedule for <%= @schedule.date_str %></h3>
+
+<%= link_to 'Create Case', edit_case_url(@schedule.id, nil) %>
+
+<br />
+<br />
+
+<table border="1px" id="case-list">
+  <tr>
+    <th>Status</th>
+    <th>Room #</th>
+    <th>Start Time</th>
+    <th>Patient Name</th>
+    <th>Procedure</th>
+    <th>Surgeon</th>
+    <th>Additional Surgeon</th>
+    <th>Nurse</th>
+    <th>Technician</th>
+    <th>&nbsp;</th>
+  </tr>
+  <% @schedule.cases.find(:all, :order => 'start_time asc').each do |c| %>
+    <tr class="<%= cycle('odd-row', 'even-row') %>">
+      <td>
+        <% form_tag change_case_status_url, :id => "status_form_#{c.id}" do %>
+          <%= hidden_field_tag 'case_id', c.id %>
+          <%= select_tag 'status', options_for_select(Case::STATUSES, c.status), :onchange => "$('status_form_#{c.id}').submit();" %>
+        <% end %>
+      </td>
+      <td><%= c.room_number %></td>
+      <td><%= c.start_time_str %></td>
+      <td><%= c.patient_name %></td>
+      <td><%= c.procedure %></td>
+      <td><%= c.surgeon %></td>
+      <td><%= c.additional_surgeon %></td>
+      <td><%= c.nurse %></td>
+      <td><%= c.technician %></td>
+      <td><%= link_to '[edit]', edit_case_url(@schedule.id, c.id) %>
+    </tr>
+  <% end %>
+</table>

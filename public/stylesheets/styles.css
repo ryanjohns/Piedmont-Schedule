@@ -1,0 +1,51 @@
+body {
+  font-family: helvetica;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:visited {
+  color: blue;
+}
+
+a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+th, td {
+  padding: 2px 3px;
+}
+
+table#case-list {
+  border-collapse: collapse;
+}
+
+table#case-list th {
+  background: yellow;
+}
+
+table#case-list td {
+  text-align: center;
+}
+
+table#case-list tr.even-row {
+  background: #b0c4de;
+}
+
+table#case-list tr.odd-row {
+  background: #91a2bc;
+}
+
+table#case-list tr.even-row:hover, table#case-list tr.odd-row:hover {
+  background: #ff6347;
+}
+
+table#case-list tr.even-row a:hover, table#case-list tr.odd-row a:hover {
+  color: blue;
+}

@@ -1,0 +1,46 @@
+<% title((@case.new_record? ? 'Create' : 'Edit') + ' Case') %>
+
+<h3><%= @case.new_record? ? 'Create' : 'Edit' %> Case</h3>
+
+<%= error_messages_for :case %>
+
+<table border="0px">
+  <% form_for :case, @case, :url => edit_case_url do |f| %>
+    <tr>
+      <td>Room Number</td>
+      <td><%= select_tag 'case[room_number]', options_for_select(Case::ROOM_NUMBERS, @case.room_number.to_s) %></td>
+    </tr>
+    <tr>
+      <td>Start Time</td>
+      <td><%= f.datetime_select :start_time %></td>
+    </tr>
+    <tr>
+      <td>Patient Name</td>
+      <td><%= f.text_field :patient_name %></td>
+    </tr>
+    <tr>
+      <td>Procedure</td>
+      <td><%= f.text_field :procedure %></td>
+    </tr>
+    <tr>
+      <td>Surgeon</td>
+      <td><%= f.text_field :surgeon %></td>
+    </tr>
+    <tr>
+      <td>Additional Surgeon</td>
+      <td><%= f.text_field :additional_surgeon %></td>
+    </tr>
+    <tr>
+      <td>Nurse</td>
+      <td><%= f.text_field :nurse %></td>
+    </tr>
+    <tr>
+      <td>Technician</td>
+      <td><%= f.text_field :technician %></td>
+    </tr>
+    <tr>
+      <td><%= submit_tag(@case.new_record? ? 'Create Case' : 'Save Changes') %></td>
+      <td><%= link_to 'Cancel', view_schedule_url(@schedule.id) %></td>
+    </tr>
+  <% end %>
+</table>

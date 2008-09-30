@@ -1,0 +1,10 @@
+<% title('Create Schedule') %>
+
+<h3>Create Schedule</h3>
+
+<% form_tag create_schedule_url do %>
+  <%= date_select('date', 'start', :order => [:month, :day, :year]) %>
+  <br />
+  <br />
+  <%= submit_tag 'Create Schedule' %>
+<% end %>
