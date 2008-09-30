@@ -25,14 +25,14 @@
     <tr class="<%= (c.status == 'Closing' ? 'closing' : cycle('odd-row', 'even-row')) %>">
       <td>
         <% form_tag change_case_status_url, :id => "status_form_#{c.id}", :style => "display: inline;" do %>
-          <%= hidden_field_tag 'case_id', c.id %>
-          <%= select_tag 'status', options_for_select(Case::STATUSES, c.status), :onchange => "$('status_form_#{c.id}').submit();" %>
+          <%= hidden_field_tag 'case_id', c.id, :id => "hidden_status_#{c.id}" %>
+          <%= select_tag 'status', options_for_select(Case::STATUSES, c.status), :onchange => "$('status_form_#{c.id}').submit();", :id => "status_field_#{c.id}" %>
         <% end %>
       </td>
       <td>
         <% form_tag change_patient_location_url do %>
-          <%= hidden_field_tag 'case_id', c.id %>
-          <%= text_field_tag 'patient_location', c.patient_location, :size => 10 %>
+          <%= hidden_field_tag 'case_id', c.id, :id => "hidden_patient_location_#{c.id}" %>
+          <%= text_field_tag 'patient_location', c.patient_location, :size => 10, :id => "patient_location_field_#{c.id}" %>
         <% end %>
       </td>
       <td><%= c.room_number %></td>
