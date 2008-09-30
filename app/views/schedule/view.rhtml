@@ -23,7 +23,7 @@
   <% @schedule.cases.find(:all, :order => 'start_time asc').each do |c| %>
     <tr class="<%= cycle('odd-row', 'even-row') %>">
       <td>
-        <% form_tag change_case_status_url, :id => "status_form_#{c.id}" do %>
+        <% form_tag change_case_status_url, :id => "status_form_#{c.id}", :style => "display: inline;" do %>
           <%= hidden_field_tag 'case_id', c.id %>
           <%= select_tag 'status', options_for_select(Case::STATUSES, c.status), :onchange => "$('status_form_#{c.id}').submit();" %>
         <% end %>
@@ -36,7 +36,7 @@
       <td><%= c.additional_surgeon %></td>
       <td><%= c.nurse %></td>
       <td><%= c.technician %></td>
-      <td><%= link_to '[edit]', edit_case_url(@schedule.id, c.id) %>
+      <td><%= link_to '[edit]', edit_case_url(@schedule.id, c.id) %></td>
     </tr>
   <% end %>
 </table>

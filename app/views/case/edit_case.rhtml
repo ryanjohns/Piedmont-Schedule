@@ -4,11 +4,11 @@
 
 <%= error_messages_for :case %>
 
-<table border="0px">
-  <% form_for :case, @case, :url => edit_case_url do |f| %>
+<% form_for :case, @case, :url => edit_case_url do |f| %>
+  <table border="0px">
     <tr>
       <td>Room Number</td>
-      <td><%= select_tag 'case[room_number]', options_for_select(Case::ROOM_NUMBERS, @case.room_number.to_s) %></td>
+      <td><%= select_tag 'case[room_number]', options_for_select(Case::ROOM_NUMBERS, @case.room_number.to_s), :id => 'case_room_number' %></td>
     </tr>
     <tr>
       <td>Start Time</td>
@@ -42,5 +42,5 @@
       <td><%= submit_tag(@case.new_record? ? 'Create Case' : 'Save Changes') %></td>
       <td><%= link_to 'Cancel', view_schedule_url(@schedule.id) %></td>
     </tr>
-  <% end %>
-</table>
+  </table>
+<% end %>
