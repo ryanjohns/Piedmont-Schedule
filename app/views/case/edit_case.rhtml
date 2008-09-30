@@ -8,7 +8,7 @@
   <table border="0px">
     <tr>
       <td>Room Number</td>
-      <td><%= select_tag 'case[room_number]', options_for_select(Case::ROOM_NUMBERS, @case.room_number.to_s), :id => 'case_room_number' %></td>
+      <td><%= select_tag 'case[room_number]', options_for_select(Case::ROOM_NUMBERS, @case.room_number), :id => 'case_room_number' %></td>
     </tr>
     <tr>
       <td>Start Time</td>

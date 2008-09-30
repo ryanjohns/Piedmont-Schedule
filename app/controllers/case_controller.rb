@@ -14,9 +14,16 @@ class CaseController < ApplicationController
   end
   
   def change_status
-    redirect_to list_schedules_url and return if !request.post? or params['case_id'].blank? or params['status'].blank?
+    redirect_to list_schedules_url and return if !request.post? or params['case_id'].blank?
     c = Case.find_by_id(params['case_id'].to_i)
-    c.status = params['status'].to_i
+    c.status = params['status']
+    c.save! and redirect_to view_schedule_url(c.schedule_id)
+  end
+  
+  def change_patient_location
+    redirect_to list_schedules_url and return if !request.post? or params['case_id'].blank?
+    c = Case.find_by_id(params['case_id'].to_i)
+    c.patient_location = params['patient_location']
     c.save! and redirect_to view_schedule_url(c.schedule_id)
   end
   

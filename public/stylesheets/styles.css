@@ -19,7 +19,7 @@ a:hover {
 }
 
 th, td {
-  padding: 2px 3px;
+  padding: 2px 5px;
 }
 
 table#case-list {
@@ -42,10 +42,6 @@ table#case-list tr.odd-row {
   background: #91a2bc;
 }
 
-table#case-list tr.even-row:hover, table#case-list tr.odd-row:hover {
+table#case-list tr.closing {
   background: #ff6347;
-}
-
-table#case-list tr.even-row a:hover, table#case-list tr.odd-row a:hover {
-  color: blue;
 }

@@ -10,7 +10,8 @@
 <table border="1px" id="case-list">
   <tr>
     <th>Status</th>
-    <th>Room #</th>
+    <th>Patient Location</th>
+    <th>Room</th>
     <th>Start Time</th>
     <th>Patient Name</th>
     <th>Procedure</th>
@@ -20,12 +21,18 @@
     <th>Technician</th>
     <th>&nbsp;</th>
   </tr>
-  <% @schedule.cases.find(:all, :order => 'start_time asc').each do |c| %>
-    <tr class="<%= cycle('odd-row', 'even-row') %>">
+  <% @schedule.cases.find(:all, :order => 'room_number asc, start_time asc').each do |c| %>
+    <tr class="<%= (c.status == 'Closing' ? 'closing' : cycle('odd-row', 'even-row')) %>">
       <td>
         <% form_tag change_case_status_url, :id => "status_form_#{c.id}", :style => "display: inline;" do %>
           <%= hidden_field_tag 'case_id', c.id %>
           <%= select_tag 'status', options_for_select(Case::STATUSES, c.status), :onchange => "$('status_form_#{c.id}').submit();" %>
+        <% end %>
+      </td>
+      <td>
+        <% form_tag change_patient_location_url do %>
+          <%= hidden_field_tag 'case_id', c.id %>
+          <%= text_field_tag 'patient_location', c.patient_location, :size => 10 %>
         <% end %>
       </td>
       <td><%= c.room_number %></td>
