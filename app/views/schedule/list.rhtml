@@ -2,8 +2,11 @@
 
 <h3>Schedules</h3>
 
-<ul>
-  <% @schedules.each do |s| %>
-    <li><%= link_to s.date_str, view_schedule_url(s.id) %> <%= link_to '[delete]', delete_schedule_url(s.id), :confirm => 'Are you sure?' %></li>
-  <% end %>
-</ul>
+<% if !@schedules.empty? %>
+  <ul>
+    <% @schedules.each do |s| %>
+      <li><%= link_to s.date_str, view_schedule_url(s.id) %> <%= link_to '[delete]', delete_schedule_url(s.id), :confirm => 'Are you sure?' %></li>
+    <% end %>
+  </ul>
+<% end %>
+
