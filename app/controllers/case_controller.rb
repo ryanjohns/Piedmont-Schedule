@@ -13,6 +13,12 @@ class CaseController < ApplicationController
     end
   end
   
+  def delete_case
+    redirect_to list_schedules_url and return if params[:case_id].blank?
+    c = Case.find_by_id(params[:case_id].to_i)
+    c.destroy and redirect_to view_schedule_url(c.schedule_id)
+  end
+  
   def change_status
     redirect_to list_schedules_url and return if !request.post? or params['case_id'].blank?
     c = Case.find_by_id(params['case_id'].to_i)

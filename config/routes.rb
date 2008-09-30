@@ -21,6 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   map.delete_schedule 'delete-schedule/:id', :controller => 'schedule', :action => 'delete_schedule', :id => nil
 
   map.edit_case 'edit-case/:schedule_id/:case_id', :controller => 'case', :action => 'edit_case', :schedule_id => nil, :case_id => nil
+  map.delete_case 'delete-case/:case_id', :controller => 'case', :action => 'delete_case', :case_id => nil
   map.change_case_status 'change-case-status', :controller => 'case', :action => 'change_status'
   map.change_patient_location 'change-patient-location', :controller => 'case', :action => 'change_patient_location'
 
