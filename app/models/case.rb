@@ -6,7 +6,7 @@ class Case < ActiveRecord::Base
   
   belongs_to :schedule
   
-  validates_presence_of :patient_name, :procedure, :surgeon, :nurse, :technician
+  validates_presence_of :patient_name, :procedure, :surgeon
   
   def start_time_str
     start_time.strftime("%H:%M")

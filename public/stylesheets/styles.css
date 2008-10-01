@@ -27,7 +27,7 @@ table#case-list {
 }
 
 table#case-list th {
-  background: yellow;
+  background: gray;
 }
 
 table#case-list td {
@@ -42,6 +42,10 @@ table#case-list tr.odd-row {
   background: #91a2bc;
 }
 
-table#case-list tr.closing {
+table#case-list tr.isolate {
   background: #ff6347;
+}
+
+table#case-list tr.latex_allergy {
+  background: yellow;
 }

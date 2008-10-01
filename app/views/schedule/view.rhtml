@@ -11,7 +11,7 @@
   <tr>
     <th>Status</th>
     <th>Patient Location</th>
-    <th>Room</th>
+    <th>OR #</th>
     <th>Start Time</th>
     <th>Patient Name</th>
     <th>Procedure</th>
@@ -22,7 +22,13 @@
     <th>&nbsp;</th>
   </tr>
   <% @schedule.cases.find(:all, :order => 'room_number asc, start_time asc').each do |c| %>
-    <tr class="<%= (c.status == 'Closing' ? 'closing' : cycle('odd-row', 'even-row')) %>">
+    <% if c.isolate? %>
+      <tr class="isolate">
+    <% elsif c.latex_allergy? %>
+      <tr class="latex_allergy">
+    <% else %>
+      <tr class="even-row">
+    <% end %>
       <td>
         <% form_tag change_case_status_url, :id => "status_form_#{c.id}", :style => "display: inline;" do %>
           <%= hidden_field_tag 'case_id', c.id, :id => "hidden_status_#{c.id}" %>

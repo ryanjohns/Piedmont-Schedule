@@ -12,6 +12,8 @@ class CreateCases < ActiveRecord::Migration
       t.column :additional_surgeon, :string
       t.column :nurse, :string
       t.column :technician, :string
+      t.column :isolate, :boolean, :default => false
+      t.column :latex_allergy, :boolean, :default => false
     end
   end
 

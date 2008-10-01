@@ -7,12 +7,12 @@
 <% form_for :case, @case, :url => edit_case_url do |f| %>
   <table border="0px">
     <tr>
-      <td>Room Number</td>
+      <td>OR Number</td>
       <td><%= select_tag 'case[room_number]', options_for_select(Case::ROOM_NUMBERS, @case.room_number), :id => 'case_room_number' %></td>
     </tr>
     <tr>
       <td>Start Time</td>
-      <td><%= f.time_select :start_time %></td>
+      <td><%= f.time_select :start_time, {:minute_step => 15} %></td>
     </tr>
     <tr>
       <td>Patient Name</td>
@@ -37,6 +37,14 @@
     <tr>
       <td>Technician</td>
       <td><%= f.text_field :technician %></td>
+    </tr>
+    <tr>
+      <td>Isolate Patient</td>
+      <td><%= f.check_box :isolate %></td>
+    </tr>
+    <tr>
+      <td>Allergic to Latex</td>
+      <td><%= f.check_box :latex_allergy %></td>
     </tr>
     <tr>
       <td><%= submit_tag(@case.new_record? ? 'Create Case' : 'Save Changes') %></td>
