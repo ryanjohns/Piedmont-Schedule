@@ -21,7 +21,7 @@
     <th>Technician</th>
     <th>&nbsp;</th>
   </tr>
-  <% @schedule.cases.find(:all, :order => 'room_number asc, start_time asc').each do |c| %>
+  <% @schedule.cases.find(:all, :order => 'or_number asc, start_time asc').each do |c| %>
     <% if c.isolate? %>
       <tr class="isolate">
     <% elsif c.latex_allergy? %>
