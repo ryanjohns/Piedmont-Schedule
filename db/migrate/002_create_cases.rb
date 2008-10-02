@@ -6,6 +6,7 @@ class CreateCases < ActiveRecord::Migration
       t.column :patient_location, :string, :default => ""
       t.column :or_number, :integer
       t.column :start_time, :datetime
+      t.column :definite_start_time, :boolean, :default => true
       t.column :patient_name, :string
       t.column :procedure, :string
       t.column :surgeon, :string

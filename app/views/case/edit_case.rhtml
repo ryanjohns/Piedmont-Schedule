@@ -15,6 +15,10 @@
       <td><%= f.time_select :start_time, {:minute_step => 15} %></td>
     </tr>
     <tr>
+      <td>Definite Start Time</td>
+      <td><%= f.check_box :definite_start_time %></td>
+    </tr>
+    <tr>
       <td>Patient Name</td>
       <td><%= f.text_field :patient_name %></td>
     </tr>

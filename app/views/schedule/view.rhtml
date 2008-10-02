@@ -13,6 +13,7 @@
     <th>Patient Location</th>
     <th>OR #</th>
     <th>Start Time</th>
+    <th>Def Time</th>
     <th>Patient Name</th>
     <th>Procedure</th>
     <th>Surgeon</th>
@@ -43,6 +44,7 @@
       </td>
       <td><%= c.or_number %></td>
       <td><%= c.start_time_str %></td>
+      <td><%= c.definite_start_time? ? 'Yes' : 'No' %></td>
       <td><%= c.patient_name %></td>
       <td><%= c.procedure %></td>
       <td><%= c.surgeon %></td>
