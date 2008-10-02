@@ -4,7 +4,7 @@ class CreateCases < ActiveRecord::Migration
       t.column :schedule_id, :integer
       t.column :status, :string, :default => ""
       t.column :patient_location, :string, :default => ""
-      t.column :room_number, :integer
+      t.column :or_number, :integer
       t.column :start_time, :datetime
       t.column :patient_name, :string
       t.column :procedure, :string
