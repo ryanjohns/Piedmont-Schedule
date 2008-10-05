@@ -6,8 +6,8 @@
 <% elsif c.new_record? %>
   <% tr_class = 'new-case-row' %>
 <% end %>
-<% form_for :case, c, :url => edit_case_url, :style => "display: inline" do |f| %>
-  <tr class="<%= tr_class %>" id="case-row-<%= c.id %>-form" style="display: <%= c.new_record? ? 'table-row' : 'none' %>;">
+<tr class="<%= tr_class %>" id="case-row-<%= c.id %>-form" style="display: <%= c.new_record? ? 'table-row' : 'none' %>;">
+  <% form_for :case, c, :url => edit_case_url, :style => "display: inline" do |f| %>
     <%= f.hidden_field :schedule_id %>
     <%= f.hidden_field :id %>
     <td><%= select_tag 'case[status]', options_for_select(Case::STATUSES, c.status), :id => 'case_status' %></td>
@@ -27,5 +27,5 @@
       <%= submit_tag(c.new_record? ? 'Create' : 'Save') %>
       <%= link_to('[cancel]', '#', :onclick => "show_display_row(#{c.id}); return false;") if !c.new_record? %>
     </td>
-  </tr>
-<% end %>
+  <% end %>
+</tr>
