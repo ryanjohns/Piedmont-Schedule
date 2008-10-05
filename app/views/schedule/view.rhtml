@@ -2,60 +2,26 @@
 
 <h3>Schedule for <%= @schedule.date_str %></h3>
 
-<%= link_to 'Create Case', edit_case_url(@schedule.id, nil) %>
-
-<br />
-<br />
-
 <table border="1px" id="case-list">
   <tr>
     <th>Status</th>
     <th>Patient Location</th>
     <th>OR #</th>
     <th>Start Time</th>
-    <th>Def Time</th>
+    <th>Def. Time</th>
     <th>Patient Name</th>
     <th>Procedure</th>
     <th>Surgeon</th>
-    <th>Additional Surgeon</th>
+    <th>Addl. Surgeon</th>
     <th>Nurse</th>
     <th>Technician</th>
+    <th>Isolate</th>
+    <th>Latex Allergy</th>
     <th>&nbsp;</th>
   </tr>
   <% @schedule.cases.find(:all, :order => 'or_number asc, start_time asc').each do |c| %>
-    <% if c.isolate? %>
-      <tr class="isolate">
-    <% elsif c.latex_allergy? %>
-      <tr class="latex_allergy">
-    <% else %>
-      <tr class="even-row">
-    <% end %>
-      <td>
-        <% form_tag change_case_status_url, :id => "status_form_#{c.id}", :style => "display: inline;" do %>
-          <%= hidden_field_tag 'case_id', c.id, :id => "hidden_status_#{c.id}" %>
-          <%= select_tag 'status', options_for_select(Case::STATUSES, c.status), :onchange => "$('status_form_#{c.id}').submit();", :id => "status_field_#{c.id}" %>
-        <% end %>
-      </td>
-      <td>
-        <% form_tag change_patient_location_url, :style => "display: inline;" do %>
-          <%= hidden_field_tag 'case_id', c.id, :id => "hidden_patient_location_#{c.id}" %>
-          <%= text_field_tag 'patient_location', c.patient_location, :size => 10, :id => "patient_location_field_#{c.id}" %>
-        <% end %>
-      </td>
-      <td><%= c.or_number %></td>
-      <td><%= c.start_time_str %></td>
-      <td><%= c.definite_start_time? ? 'Yes' : 'No' %></td>
-      <td><%= c.patient_name %></td>
-      <td><%= c.procedure %></td>
-      <td><%= c.surgeon %></td>
-      <td><%= c.additional_surgeon %></td>
-      <td><%= c.nurse %></td>
-      <td><%= c.technician %></td>
-      <td>
-        <%= link_to '[edit]', edit_case_url(@schedule.id, c.id) %>
-        |
-        <%= link_to '[delete]', delete_case_url(c.id), :confirm => 'Are you sure?' %>
-      </td>
-    </tr>
+    <%= render :partial => 'case_row', :locals => {:c => c} %>
+    <%= render :partial => 'case_form_row', :locals => {:c => c} %>
   <% end %>
+  <%= render :partial => 'case_form_row', :locals => {:c => @new_case} %>
 </table>

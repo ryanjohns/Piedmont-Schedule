@@ -1,0 +1,31 @@
+<% tr_class = 'case-row' %>
+<% if c.isolate? %>
+  <% tr_class = 'isolate-row' %>
+<% elsif c.latex_allergy? %>
+  <% tr_class = 'latex-allergy-row' %>
+<% elsif c.new_record? %>
+  <% tr_class = 'new-case-row' %>
+<% end %>
+<tr class="<%= tr_class %>" id="case-row-<%= c.id %>-form" style="display: <%= c.new_record? ? 'table-row' : 'none' %>;">
+  <% form_for :case, c, :url => edit_case_url, :style => "display: inline" do |f| %>
+    <%= f.hidden_field :schedule_id %>
+    <%= f.hidden_field :id %>
+    <td><%= select_tag 'case[status]', options_for_select(Case::STATUSES, c.status), :id => 'case_status' %></td>
+    <td><%= f.text_field :patient_location, :size => 10 %></td>
+    <td><%= select_tag 'case[or_number]', options_for_select(Case::OR_NUMBERS, c.or_number), :id => 'case_or_number' %></td>
+    <td style="white-space: nowrap;"><%= f.time_select :start_time, {:minute_step => 15} %></td>
+    <td><%= f.check_box :definite_start_time %></td>
+    <td><%= f.text_field :patient_name, :size => 10 %></td>
+    <td><%= f.text_field :procedure, :size => 10 %></td>
+    <td><%= f.text_field :surgeon, :size => 10 %></td>
+    <td><%= f.text_field :additional_surgeon, :size => 10 %></td>
+    <td><%= f.text_field :nurse, :size => 10 %></td>
+    <td><%= f.text_field :technician, :size => 10 %></td>
+    <td><%= f.check_box :isolate %></td>
+    <td><%= f.check_box :latex_allergy %></td>
+    <td>
+      <%= submit_tag(c.new_record? ? 'Create' : 'Save') %>
+      <%= link_to('[cancel]', '#', :onclick => "show_display_row(#{c.id}); return false;") if !c.new_record? %>
+    </td>
+  <% end %>
+</tr>

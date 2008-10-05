@@ -1,0 +1,25 @@
+<% tr_class = 'case-row' %>
+<% if c.isolate? %>
+  <% tr_class = 'isolate-row' %>
+<% elsif c.latex_allergy? %>
+  <% tr_class = 'latex-allergy-row' %>
+<% end %>
+<tr class="<%= tr_class %>" id="case-row-<%= c.id %>" style="display: table-row;">
+  <td><%= c.status %></td>
+  <td><%= c.patient_location %></td>
+  <td><%= c.or_number %></td>
+  <td><%= c.start_time_str %></td>
+  <td><%= c.definite_start_time? ? 'Yes' : 'No' %></td>
+  <td><%= c.patient_name %></td>
+  <td><%= c.procedure %></td>
+  <td><%= c.surgeon %></td>
+  <td><%= c.additional_surgeon %></td>
+  <td><%= c.nurse %></td>
+  <td><%= c.technician %></td>
+  <td><%= c.isolate? ? 'Yes' : 'No' %></td>
+  <td><%= c.latex_allergy? ? 'Yes' : 'No' %></td>
+  <td>
+    <%= link_to '[edit]', '#', :onclick => "show_form_row(#{c.id}); return false;" %>
+    <%= link_to '[delete]', delete_case_url(c.id), :confirm => 'Are you sure?' %>
+  </td>
+</tr>

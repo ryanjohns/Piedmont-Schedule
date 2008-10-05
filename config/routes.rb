@@ -20,10 +20,8 @@ ActionController::Routing::Routes.draw do |map|
   map.create_schedule 'create-schedule', :controller => 'schedule', :action => 'create_schedule'
   map.delete_schedule 'delete-schedule/:id', :controller => 'schedule', :action => 'delete_schedule', :id => nil
 
-  map.edit_case 'edit-case/:schedule_id/:case_id', :controller => 'case', :action => 'edit_case', :schedule_id => nil, :case_id => nil
+  map.edit_case 'edit-case', :controller => 'case', :action => 'edit_case'
   map.delete_case 'delete-case/:case_id', :controller => 'case', :action => 'delete_case', :case_id => nil
-  map.change_case_status 'change-case-status', :controller => 'case', :action => 'change_status'
-  map.change_patient_location 'change-patient-location', :controller => 'case', :action => 'change_patient_location'
 
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'

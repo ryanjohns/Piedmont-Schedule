@@ -6,15 +6,15 @@ body {
 
 a {
   text-decoration: none;
-  color: blue;
+  color: #00f;
 }
 
 a:visited {
-  color: blue;
+  color: #00f;
 }
 
 a:hover {
-  color: red;
+  color: #f00;
   text-decoration: underline;
 }
 
@@ -27,25 +27,25 @@ table#case-list {
 }
 
 table#case-list th {
-  background: gray;
+  background: #bbb;
 }
 
 table#case-list td {
   text-align: center;
 }
 
-table#case-list tr.even-row {
+table#case-list tr.case-row {
   background: #b0c4de;
 }
 
-table#case-list tr.odd-row {
-  background: #91a2bc;
-}
-
-table#case-list tr.isolate {
+table#case-list tr.isolate-row {
   background: #ff6347;
 }
 
-table#case-list tr.latex_allergy {
-  background: yellow;
+table#case-list tr.latex-allergy-row {
+  background: #dd0;
+}
+
+table#case-list tr.new-case-row {
+  background: #eee;
 }
