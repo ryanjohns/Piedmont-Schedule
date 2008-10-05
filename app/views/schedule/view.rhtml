@@ -6,18 +6,17 @@
   <table border="1px" id="case-list">
     <tr>
       <th>Status</th>
-      <th>Patient Location</th>
+      <th>Pt. Loc.</th>
       <th>OR #</th>
       <th>Start Time</th>
       <th>Def. Time</th>
       <th>Patient Name</th>
       <th>Procedure</th>
       <th>Surgeon</th>
-      <th>Addl. Surgeon</th>
       <th>Nurse</th>
       <th>Technician</th>
-      <th>Isolate</th>
-      <th>Latex Allergy</th>
+      <th>Isol.</th>
+      <th>Latex Alrgy.</th>
       <th>&nbsp;</th>
     </tr>
     <% @schedule.cases.find(:all, :order => 'or_number asc, start_time asc').each do |c| %>

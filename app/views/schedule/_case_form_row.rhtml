@@ -1,14 +1,13 @@
 <td><%= select_tag 'case[status]', options_for_select(Case::STATUSES, c.status), :id => "status-#{c.id}" %></td>
-<td><%= form.text_field :patient_location, :size => 10 %></td>
+<td><%= form.text_field :patient_location, :size => 5 %></td>
 <td><%= select_tag 'case[or_number]', options_for_select(Case::OR_NUMBERS, c.or_number), :id => "or-number-#{c.id}" %></td>
 <td style="white-space: nowrap;"><%= form.time_select :start_time, {:minute_step => 15} %></td>
 <td><%= form.check_box :definite_start_time, {}, "1", "0" %></td>
 <td><%= form.text_field :patient_name, :size => 10 %></td>
 <td><%= form.text_field :procedure, :size => 10 %></td>
 <td><%= form.text_field :surgeon, :size => 10 %></td>
-<td><%= form.text_field :additional_surgeon, :size => 10 %></td>
-<td><%= form.text_field :nurse, :size => 10 %></td>
-<td><%= form.text_field :technician, :size => 10 %></td>
+<td><%= form.text_field :nurse, :size => 8 %></td>
+<td><%= form.text_field :technician, :size => 8 %></td>
 <td><%= form.check_box :isolate, {}, "1", "0" %></td>
 <td><%= form.check_box :latex_allergy, {}, "1", "0" %></td>
 <td>
