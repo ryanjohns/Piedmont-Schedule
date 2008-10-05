@@ -7,9 +7,13 @@ class ScheduleController < ApplicationController
   def view
     @schedule = Schedule.find_by_id(params[:id]) || Schedule.find(:first, :order => 'date desc')
     redirect_to create_schedule_url and return if @schedule.nil?
-    @new_case = Case.new
-    @new_case.schedule_id = @schedule.id
-    @new_case.start_time = @schedule.date
+    @case = Case.find_by_id(params[:edit_id].to_i)
+    if @case.nil?
+      @case = Case.new
+      @case.schedule_id = @schedule.id
+      @case.start_time = @schedule.date
+      @case.definite_start_time = true
+    end
   end
   
   def create_schedule

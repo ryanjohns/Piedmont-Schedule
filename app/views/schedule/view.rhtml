@@ -2,26 +2,43 @@
 
 <h3>Schedule for <%= @schedule.date_str %></h3>
 
-<table border="1px" id="case-list">
-  <tr>
-    <th>Status</th>
-    <th>Patient Location</th>
-    <th>OR #</th>
-    <th>Start Time</th>
-    <th>Def. Time</th>
-    <th>Patient Name</th>
-    <th>Procedure</th>
-    <th>Surgeon</th>
-    <th>Addl. Surgeon</th>
-    <th>Nurse</th>
-    <th>Technician</th>
-    <th>Isolate</th>
-    <th>Latex Allergy</th>
-    <th>&nbsp;</th>
-  </tr>
-  <% @schedule.cases.find(:all, :order => 'or_number asc, start_time asc').each do |c| %>
-    <%= render :partial => 'case_row', :locals => {:c => c} %>
-    <%= render :partial => 'case_form_row', :locals => {:c => c} %>
-  <% end %>
-  <%= render :partial => 'case_form_row', :locals => {:c => @new_case} %>
-</table>
+<% form_for :case, @case, :url => edit_case_url do |form| %>
+  <table border="1px" id="case-list">
+    <tr>
+      <th>Status</th>
+      <th>Patient Location</th>
+      <th>OR #</th>
+      <th>Start Time</th>
+      <th>Def. Time</th>
+      <th>Patient Name</th>
+      <th>Procedure</th>
+      <th>Surgeon</th>
+      <th>Addl. Surgeon</th>
+      <th>Nurse</th>
+      <th>Technician</th>
+      <th>Isolate</th>
+      <th>Latex Allergy</th>
+      <th>&nbsp;</th>
+    </tr>
+    <% @schedule.cases.find(:all, :order => 'or_number asc, start_time asc').each do |c| %>
+      <% tr_class = 'case-row' %>
+      <% if c.isolate? %>
+        <% tr_class = 'isolate-row' %>
+      <% elsif c.latex_allergy? %>
+        <% tr_class = 'latex-allergy-row' %>
+      <% end %>
+      <tr class="<%= tr_class %>" id="case-row-<%= c.id %>">
+        <% if @case.id == c.id %>
+          <%= render :partial => 'case_form_row', :locals => {:c => c, :form => form} %>
+        <% else %>
+          <%= render :partial => 'case_row', :locals => {:c => c} %>
+        <% end %>
+      </tr>
+    <% end %>
+    <% if @case.new_record? %>
+      <tr class="new-case-row" id="new-case-row">
+        <%= render :partial => 'case_form_row', :locals => {:c => @case, :form => form} %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
