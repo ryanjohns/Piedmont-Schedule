@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!-- Built by Ryan Johns -->
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -15,6 +17,8 @@
       <%= link_to 'New Schedule', create_schedule_url %>
       |
       <%= link_to 'Latest Schedule', view_schedule_url(nil) %>
+      |
+      <%= link_to (session[:skip_auto_reload].blank? ? 'Disable' : 'Enable') + ' Auto Refresh', toggle_auto_reload_url %>
     </div>
     <div id="built-by">
       Built by Ryan Johns

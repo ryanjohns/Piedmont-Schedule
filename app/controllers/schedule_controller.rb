@@ -30,4 +30,13 @@ class ScheduleController < ApplicationController
     redirect_to list_schedules_url
   end
   
+  def toggle_auto_reload
+    if session[:skip_auto_reload].blank?
+      session[:skip_auto_reload] = 'yes'
+    else
+      session[:skip_auto_reload] = nil
+    end
+    redirect_to request.env["HTTP_REFERER"]
+  end
+  
 end

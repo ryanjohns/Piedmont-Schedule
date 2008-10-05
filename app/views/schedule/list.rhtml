@@ -10,3 +10,8 @@
   </ul>
 <% end %>
 
+<% if session[:skip_auto_reload].blank? %>
+  <script type="text/javascript">
+    setTimeout("window.location.reload()", 60000);
+  </script>
+<% end %>

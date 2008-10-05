@@ -41,3 +41,9 @@
     <% end %>
   </table>
 <% end %>
+
+<% if session[:skip_auto_reload].blank? %>
+  <script type="text/javascript">
+    setTimeout("window.location.reload()", 30000);
+  </script>
+<% end %>

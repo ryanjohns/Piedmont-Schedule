@@ -28,6 +28,7 @@ div#top-nav {
 
 div#built-by {
   float: right;
+  font-size: 10px;
 }
 
 table#case-list {

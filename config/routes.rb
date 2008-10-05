@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.view_schedule 'view-schedule/:id/:edit_id', :controller => 'schedule', :action => 'view', :id => nil, :edit_id => 0
   map.create_schedule 'create-schedule', :controller => 'schedule', :action => 'create_schedule'
   map.delete_schedule 'delete-schedule/:id', :controller => 'schedule', :action => 'delete_schedule', :id => nil
+  map.toggle_auto_reload 'toggle-auto-reload', :controller => 'schedule', :action => 'toggle_auto_reload'
 
   map.edit_case 'edit-case', :controller => 'case', :action => 'edit_case'
   map.delete_case 'delete-case/:id', :controller => 'case', :action => 'delete_case', :id => nil
