@@ -29,7 +29,7 @@
       <% end %>
       <tr class="<%= tr_class %>" id="case-row-<%= c.id %>">
         <% if @case.id == c.id %>
-          <%= render :partial => 'case_form_row', :locals => {:c => c, :form => form} %>
+          <%= render :partial => 'case_form_row', :locals => {:c => @case, :form => form} %>
         <% else %>
           <%= render :partial => 'case_row', :locals => {:c => c} %>
         <% end %>
